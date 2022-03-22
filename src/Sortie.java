@@ -1,8 +1,5 @@
 public class Sortie extends Position
 {
-    //Attributes
-    private int x, y;
-
     //Constructors
     public Sortie ()
     {
