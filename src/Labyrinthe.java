@@ -13,9 +13,9 @@ class Labyrinthe{
     {
         if (this.murs[x][y])
             return 'X';
-        if (x == this.personnage.x && y == this.personnage.y)c
+        if (x == this.personnage.getX() && y == this.personnage.getY())
             return 'P';
-        if (x == this.sortie.x && y == this.sortie.y)
+        if (x == this.sortie.getX() && y == this.sortie.getY())
             return 'S';
         return '.';
     }
