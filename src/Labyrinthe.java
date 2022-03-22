@@ -3,9 +3,14 @@
  */
 class Labyrinthe{
 
+    //Attributes
+    boolean [][] murs;
+    Personnage personnage;
+    Sortie sortie;
 
-    char getChar(int x, int y) {
-        throw new Error("TODO");
+    char getChar(int x, int y)
+    {
+
     }
 
 
