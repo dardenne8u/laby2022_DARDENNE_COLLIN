@@ -8,9 +8,16 @@ class Labyrinthe{
     Personnage personnage;
     Sortie sortie;
 
+    //Methods
     char getChar(int x, int y)
     {
-
+        if (this.murs[x][y])
+            return 'X';
+        if (x == this.personnage.x && y == this.personnage.y)
+            return 'P';
+        if (x == this.sortie.x && y == this.sortie.y)
+            return 'S';
+        return '.';
     }
 
 
