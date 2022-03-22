@@ -33,8 +33,6 @@ class Labyrinthe{
                 resPostion[0] = x;
                 resPostion[1] = y+1;
                 break;
-            default:
-                throw new ActionInconnueException("Direction inconnue !");
         }
         return  resPostion;
     }
