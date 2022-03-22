@@ -3,6 +3,13 @@
  */
 class Labyrinthe{
 
+    // Static attributes
+    public static final String HAUT = "haut";
+    public static final String BAS = "bas";
+    public static final String DROITE = "droite";
+    public static final String GAUCHE = "gauche";
+
+
     //Attributes
     boolean [][] murs;
     Personnage personnage;
@@ -25,19 +32,19 @@ class Labyrinthe{
     static int[] getSuivant(int x, int y, String action) throws ActionInconnueException{
         int[] resPostion = new int[2];
         switch (action){
-            case "HAUT":
+            case "haut":
                 resPostion[0] = x-1;
                 resPostion[1] = y;
                 break;
-            case "BAS":
+            case "bas":
                 resPostion[0] = x+1;
                 resPostion[1] = y;
                 break;
-            case "GAUCHE":
+            case "gauche":
                 resPostion[0] = x;
                 resPostion[1] = y-1;
                 break;
-            case "DROITE":
+            case "droite":
                 resPostion[0] = x;
                 resPostion[1] = y+1;
                 break;
