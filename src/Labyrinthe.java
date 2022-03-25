@@ -1,4 +1,8 @@
-/** 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+/**
  * Squelette de classe labyrinthe
  */
 class Labyrinthe{
@@ -97,8 +101,71 @@ class Labyrinthe{
         throw new Error("TODO");
     }
 
-    public static Labyrinthe chargerLabyrinthe(String nom) {
-        throw new Error("TODO");
+    public static Labyrinthe chargerLabyrinthe(String nom) throws IOException, FichierIncorrectException {
+        BufferedReader br = new BufferedReader(new FileReader(nom));
+        int x,y;
+
+        try{
+            x = Integer.parseInt(br.readLine());
+            y = Integer.parseInt(br.readLine());
+        }
+        catch (NumberFormatException e){
+            throw new FichierIncorrectException("probleme numero ligne ou colonne");
+        }
+
+        Labyrinthe res = new Labyrinthe();
+        res.murs = new boolean[x][y];
+
+        String ligne = br.readLine();
+        int posLigne = 0;
+        // Parcours du fichier
+        while (ligne != null){
+            // Parcours de la ligne
+
+            // S'il y a trop ou pas assez de colonne
+            if (ligne.length() != res.murs[0].length)
+                throw new FichierIncorrectException("nombre colonnes ne correspond pas");
+            for (int posCol=0; posCol < ligne.length(); posCol++ ){
+                char c = ligne.charAt(posCol);
+                switch (c){
+                    case Labyrinthe.MUR:
+                        res.murs[posLigne][posCol] = true;
+                        break;
+                    case Labyrinthe.SORTIE:
+                        res.murs[posLigne][posCol] = false;
+                        if (res.sortie == null)
+                            res.sortie = new Sortie(posLigne, posCol);
+                        throw new FichierIncorrectException("plusieurs sorties");
+                        break;
+                    case Labyrinthe.VIDE:
+                        res.murs[posLigne][posCol] = false;
+                        break;
+                    case Labyrinthe.PJ:
+                        res.murs[posLigne][posCol] = false;
+                        // Verification qu'il n'y ait qu'un seul personnage
+                        if (res.personnage == null)
+                            res.personnage = new Personnage(x, y);
+                        else
+                            throw new FichierIncorrectException("plusieurs personnages");
+                        break;
+                    default:
+                        throw new FichierIncorrectException("Caractere inconnu "+ c);
+                }
+            }
+            ligne = br.readLine();
+            posLigne++;
+        }
+        // Si il y a plus ou moins de ligne qu'attendu
+        if (posLigne-1 != res.murs.length)
+            throw new FichierIncorrectException("Nombre ligne ne correspond pas");
+
+        // S'il n'y a pas de sortie
+        if (res.sortie == null)
+            throw new FichierIncorrectException("Sortie inconnue");
+
+        // S'il n'y a pas de personnage
+        if (res.personnage == null)
+            throw new FichierIncorrectException("Personnage inconnu");
     }
 
 }
