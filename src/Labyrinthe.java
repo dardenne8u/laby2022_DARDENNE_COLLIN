@@ -99,7 +99,7 @@ class Labyrinthe{
             }
             sb.append("\n");
         }
-        //sb.append("\nPosition du personnage :")
+        sb.append("\nPosition du personnage :" + this.personnage.getX() + ";" + this.personnage.getY());
 
         return sb.toString();
     }
