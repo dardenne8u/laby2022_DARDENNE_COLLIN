@@ -26,7 +26,6 @@ class Labyrinthe{
     {
         if (this.murs[x][y])
             return MUR;
-
         if (x == this.personnage.getX() && y == this.personnage.getY())
             return PJ;
         if (x == this.sortie.getX() && y == this.sortie.getY())
@@ -62,7 +61,17 @@ class Labyrinthe{
 
 
     void deplacerPerso(String action) throws ActionInconnueException {
-        throw new Error("TODO");
+        boolean deplacementfini = false;
+        int[] posApresDeplacement;
+        char typeCase;
+        while (!deplacementfini){
+            posApresDeplacement = Labyrinthe.getSuivant(this.personnage.getX(), this.personnage.getY(), action);
+            typeCase = getChar(posApresDeplacement[0], posApresDeplacement[1]);
+            if (typeCase == '.' || typeCase == 'S'){
+                this.personnage.setX(posApresDeplacement[0]);
+                this.personnage.setY(posApresDeplacement[1]);
+            }
+        }
     }
 
 
