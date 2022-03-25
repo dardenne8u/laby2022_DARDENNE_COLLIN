@@ -180,6 +180,8 @@ class Labyrinthe{
         // S'il n'y a pas de personnage
         if (res.personnage == null)
             throw new FichierIncorrectException("Personnage inconnu");
+
+        return res;
     }
 
 }
