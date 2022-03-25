@@ -76,8 +76,20 @@ class Labyrinthe{
 
 
     public String toString() {
-        StringBuffer sb = new StringBuffer("");
-        for (int i = 0 ; i <)
+        StringBuffer sb = new StringBuffer("Dimensions :\n");
+        sb.append(this.murs[0].length + "\n");
+        sb.append(this.murs.length + "\n");
+
+        sb.append("Etat du labyrinthe :\n");
+        for (int i = 0 ; i < this.murs.length)
+        {
+            for (int j = 0 ; j < this.murs[i].length ; j ++)
+            {
+                sb.append(this.getChar(j,i));
+            }
+            sb.append("\n");
+        }
+        //sb.append("\nPosition du personnage :")
 
         return sb.toString();
     }
