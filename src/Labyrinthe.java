@@ -149,7 +149,8 @@ class Labyrinthe{
                         res.murs[posLigne][posCol] = false;
                         if (res.sortie == null)
                             res.sortie = new Sortie(posLigne, posCol);
-                        throw new FichierIncorrectException("plusieurs sorties");
+                        else
+                            throw new FichierIncorrectException("plusieurs sorties");
                         break;
                     case Labyrinthe.VIDE:
                         res.murs[posLigne][posCol] = false;
@@ -158,7 +159,7 @@ class Labyrinthe{
                         res.murs[posLigne][posCol] = false;
                         // Verification qu'il n'y ait qu'un seul personnage
                         if (res.personnage == null)
-                            res.personnage = new Personnage(x, y);
+                            res.personnage = new Personnage(posLigne, posCol);
                         else
                             throw new FichierIncorrectException("plusieurs personnages");
                         break;
@@ -170,7 +171,7 @@ class Labyrinthe{
             posLigne++;
         }
         // Si il y a plus ou moins de ligne qu'attendu
-        if (posLigne-1 != res.murs.length)
+        if (posLigne != res.murs.length)
             throw new FichierIncorrectException("Nombre ligne ne correspond pas");
 
         // S'il n'y a pas de sortie
