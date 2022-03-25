@@ -91,7 +91,7 @@ class Labyrinthe{
         sb.append(this.murs.length + "\n");
 
         sb.append("Etat du labyrinthe :\n");
-        for (int i = 0 ; i < this.murs.length)
+        for (int i = 0 ; i < this.murs.length ; i ++)
         {
             for (int j = 0 ; j < this.murs[i].length ; j ++)
             {
