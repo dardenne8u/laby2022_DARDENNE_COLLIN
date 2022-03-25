@@ -61,15 +61,25 @@ class Labyrinthe{
 
 
     void deplacerPerso(String action) throws ActionInconnueException {
+        // Initialisation
         boolean deplacementfini = false;
         int[] posApresDeplacement;
         char typeCase;
+
+        // Se deplace dans une direction tant qu'il ne croise pas un mur
         while (!deplacementfini){
+            // Recuperation des valeurs de la case suivante
             posApresDeplacement = Labyrinthe.getSuivant(this.personnage.getX(), this.personnage.getY(), action);
+            // Recuperation du type de la case suivante
             typeCase = getChar(posApresDeplacement[0], posApresDeplacement[1]);
-            if (typeCase == '.' || typeCase == 'S'){
+
+            // Verification du type correspondant a des cases ou on peut s'y deplacer
+            if (typeCase == Labyrinthe.VIDE || typeCase == Labyrinthe.SORTIE){
                 this.personnage.setX(posApresDeplacement[0]);
                 this.personnage.setY(posApresDeplacement[1]);
+            }
+            else{
+                deplacementfini = true;
             }
         }
     }
