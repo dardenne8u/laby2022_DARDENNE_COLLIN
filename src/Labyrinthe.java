@@ -9,6 +9,12 @@ class Labyrinthe{
     public static final String DROITE = "droite";
     public static final String GAUCHE = "gauche";
 
+    public static final char MUR = 'X';
+    public static final char PJ = 'P';
+    public static final char SORTIE = 'S';
+    public static final char VIDE = '.';
+
+
 
     //Attributes
     boolean [][] murs;
@@ -19,12 +25,12 @@ class Labyrinthe{
     char getChar(int x, int y)
     {
         if (this.murs[x][y])
-            return 'X';
+            return MUR;
         if (x == this.personnage.getX() && y == this.personnage.getY())
-            return 'P';
+            return PJ;
         if (x == this.sortie.getX() && y == this.sortie.getY())
-            return 'S';
-        return '.';
+            return SORTIE;
+        return VIDE;
     }
 
 
@@ -80,7 +86,10 @@ class Labyrinthe{
 
 
     public String toString() {
-        throw new Error("TODO");
+        StringBuffer sb = new StringBuffer("");
+        for (int i = 0 ; i <)
+
+        return sb.toString();
     }
 
 
