@@ -1,4 +1,3 @@
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -7,7 +6,7 @@ public class MainLaby
     public static void main(String[] args)
     {
         String commande= "";
-        Labyrinthe laby;
+        Labyrinthe laby = null;
         try {
             laby = Labyrinthe.chargerLabyrinthe(args[0]);
         } catch (FileNotFoundException e){
