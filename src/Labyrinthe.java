@@ -99,7 +99,7 @@ class Labyrinthe{
         {
             for (int j = 0 ; j < this.murs[i].length ; j ++)
             {
-                sb.append(this.getChar(j,i));
+                sb.append(this.getChar(i,j));
             }
             sb.append("\n");
         }
