@@ -12,7 +12,7 @@ public class MainLaby
         try {
             laby = Labyrinthe.chargerLabyrinthe(args[0]);
 
-            while (!commande.equals("exit"))
+            while (!commande.equals("exit") || !laby.etreFini())
             {
                 System.out.println(laby);
                 System.out.print("\nEntrer une action :\n- exit\n- haut\n- bas\n- gauche\n- droite\n>> ");
@@ -24,7 +24,7 @@ public class MainLaby
                 }
                 catch (ActionInconnueException e)
                 {
-                    System.out.println("Commande inconnue");
+                    System.out.println("Commande inconnue\n");
                 }
 
 
