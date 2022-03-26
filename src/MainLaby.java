@@ -12,14 +12,14 @@ public class MainLaby
         try {
             laby = Labyrinthe.chargerLabyrinthe(args[0]);
 
-            while (commande != "exit")
+            while (!commande.equals("exit"))
             {
                 System.out.println(laby);
-                System.out.println("Entrer une action :\n- exit\n-haut\n- bas\n- gauche\n- droite\n>> ");
+                System.out.print("\nEntrer une action :\n- exit\n- haut\n- bas\n- gauche\n- droite\n>> ");
                 commande = sc.nextLine();
 
                 try{
-                    if (commande != "exit")
+                    if (!commande.equals("exit"))
                         laby.deplacerPerso(commande);
                 }
                 catch (ActionInconnueException e)
