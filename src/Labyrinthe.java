@@ -93,6 +93,9 @@ class Labyrinthe{
         StringBuffer sb = new StringBuffer("");
 
         sb.append("Etat du labyrinthe :\n");
+        sb.append("Dimensions : \t" + this.murs.length + ":" + this.murs[0].length);
+        sb.append("\nPersonnage : \t" + this.personnage.getX() + ":" + this.personnage.getY());
+        sb.append("\nSortie :\t\t" + this.sortie.getX() + ":" + this.sortie.getY() + "\n");
         for (int i = 0 ; i < this.murs.length ; i ++)
         {
             for (int j = 0 ; j < this.murs[i].length ; j ++)
@@ -101,10 +104,7 @@ class Labyrinthe{
             }
             sb.append("\n");
         }
-        sb.append("\nDimensions : \t" + this.murs.length + ":" + this.murs[0].length);
-        sb.append("\nPersonnage : \t" + this.personnage.getX() + ":" + this.personnage.getY());
-        sb.append("\nSortie :\t\t" + this.sortie.getX() + ":" + this.sortie.getY());
-
+        
         return sb.toString();
     }
 

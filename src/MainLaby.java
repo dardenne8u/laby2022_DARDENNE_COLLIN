@@ -15,7 +15,7 @@ public class MainLaby
             while (!commande.equals("exit"))
             {
                 System.out.println(laby);
-                System.out.print("\nEntrer une action :\n- Deplacer le personnage : haut / bas / gauche / droite\n- Quitter : exit\n>> ");
+                System.out.print("Entrer une action :\n- Deplacer le personnage : haut / bas / gauche / droite\n- Quitter : exit\n>> ");
                 commande = sc.nextLine();
 
                 try{
