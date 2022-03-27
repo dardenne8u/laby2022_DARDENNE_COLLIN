@@ -12,10 +12,10 @@ public class MainLaby
         try {
             laby = Labyrinthe.chargerLabyrinthe(args[0]);
 
-            while (!commande.equals("exit") || !laby.etreFini())
+            while (!commande.equals("exit"))
             {
                 System.out.println(laby);
-                System.out.print("\nEntrer une action :\n- exit\n- haut\n- bas\n- gauche\n- droite\n>> ");
+                System.out.print("\nEntrer une action :\n- Deplacer le personnage : haut / bas / gauche / droite\n- Quitter : exit\n>> ");
                 commande = sc.nextLine();
 
                 try{
@@ -27,6 +27,12 @@ public class MainLaby
                     System.out.println("Commande inconnue\n");
                 }
 
+                if (laby.etreFini())
+                {
+                    commande = "exit";
+                    System.out.println(laby);
+                    System.out.println("Vous avez gagne !");
+                }
 
             }
             
