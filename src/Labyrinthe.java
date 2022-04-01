@@ -145,6 +145,10 @@ class Labyrinthe{
         int posLigne = 0;
         // Parcours du fichier
         while (ligne != null){
+            // S'il y a plus de ligne qu'attendu
+            if (posLigne > res.murs.length)
+                throw new FichierIncorrectException("Nombre de ligne trop grand !");
+
             // S'il y a trop ou pas assez de colonne
             if (ligne.length() != res.murs[0].length)
                 throw new FichierIncorrectException("nombre colonnes ne correspond pas");
@@ -180,9 +184,8 @@ class Labyrinthe{
             ligne = br.readLine();
             posLigne++;
         }
-        // Si il y a plus ou moins de ligne qu'attendu
-        if (posLigne != res.murs.length)
-            throw new FichierIncorrectException("Nombre ligne ne correspond pas");
+        if (posLigne < res.murs.length)
+            throw new FichierIncorrectException("Nombre de ligne trop faible");
 
         // S'il n'y a pas de sortie
         if (res.sortie == null)
