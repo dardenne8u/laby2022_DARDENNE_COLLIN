@@ -12,4 +12,10 @@ public class Sortie extends Position
     }
 
     //Methods
+
+    @Override
+    public boolean equals(Object obj) {
+        Sortie s = (Sortie) obj;
+        return this.getX() == s.getX() && this.getY() == s.getY();
+    }
 }
