@@ -16,6 +16,7 @@ public class Personnage extends Position{
      */
     @Override
     public boolean equals(Object obj) {
+        if (this == obj) return true;
         Personnage p = (Personnage) obj;
         return this.getX() == p.getX() && this.getY() == p.getY();
     }
