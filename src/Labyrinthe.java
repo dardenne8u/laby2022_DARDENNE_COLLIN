@@ -141,16 +141,15 @@ class Labyrinthe{
 
         Labyrinthe res = new Labyrinthe();
         res.murs = new boolean[x][y];
-
+        int longueurligne = 0;
         String ligne = br.readLine();
         int posLigne = 0;
         // Parcours du fichier
         while (ligne != null){
-            // Parcours de la ligne
-
             // S'il y a trop ou pas assez de colonne
             if (ligne.length() != res.murs[0].length)
                 throw new FichierIncorrectException("nombre colonnes ne correspond pas");
+            
             for (int posCol=0; posCol < ligne.length(); posCol++ ){
                 char c = ligne.charAt(posCol);
                 switch (c){

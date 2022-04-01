@@ -3,11 +3,12 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class LabyrintheTest {
 
     @Test
-    public void test_charger() throws FichierIncorrectException, IOException {
+    public void test_charger_PasDeProbleme() throws FichierIncorrectException, IOException {
         // Initialisation
         Labyrinthe atester = Labyrinthe.chargerLabyrinthe("laby/laby0.txt");
 
@@ -23,6 +24,30 @@ class LabyrintheTest {
 
         // Test du labyrinthe
         assertEquals(resultat, atester, "Mauvais labyrinthe");
+    }
+
+    @Test
+    public void test_charger_deuxSortie(){
+        Exception exception = assertThrows(FichierIncorrectException.class, ()->{
+            Labyrinthe atester = Labyrinthe.chargerLabyrinthe("laby/laby_deuxSortie.txt");
+        });
+
+        String msgAttendu = "plusieurs sorties";
+        String msgRecu = exception.getMessage();
+
+        assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
+    }
+
+    @Test
+    public void test_charger_pasSortie(){
+        Exception exception = assertThrows(FichierIncorrectException.class, ()->{
+            Labyrinthe atester = Labyrinthe.chargerLabyrinthe("laby/laby_pasSortie.txt");
+        });
+
+        String msgAttendu = "Sortie inconnue";
+        String msgRecu = exception.getMessage();
+
+        assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
     }
 
 }
