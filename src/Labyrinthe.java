@@ -149,7 +149,7 @@ class Labyrinthe{
             // S'il y a trop ou pas assez de colonne
             if (ligne.length() != res.murs[0].length)
                 throw new FichierIncorrectException("nombre colonnes ne correspond pas");
-            
+
             for (int posCol=0; posCol < ligne.length(); posCol++ ){
                 char c = ligne.charAt(posCol);
                 switch (c){
