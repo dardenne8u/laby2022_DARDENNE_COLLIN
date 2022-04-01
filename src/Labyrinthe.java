@@ -104,7 +104,7 @@ class Labyrinthe{
             }
             sb.append("\n");
         }
-        
+
         return sb.toString();
     }
 
