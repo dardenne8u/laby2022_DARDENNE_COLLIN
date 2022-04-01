@@ -7,6 +7,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class LabyrintheTest {
 
+    /**
+     * Test la methode chargerLabyrinthe lors que le fichier
+     * n'a aucune erreur de format
+     * @throws FichierIncorrectException Mauvais format de lecture pour le fichier
+     * @throws IOException Impossibilite de lire le fichier
+     */
     @Test
     public void test_charger_PasDeProbleme() throws FichierIncorrectException, IOException {
         // Initialisation
@@ -26,6 +32,9 @@ class LabyrintheTest {
         assertEquals(resultat, atester, "Mauvais labyrinthe");
     }
 
+    /**
+     * Test la methode chargerLabyrinthe en verifiant si l'exception deux sortie est bien lancee
+     */
     @Test
     public void test_charger_deuxSortie(){
         Exception exception = assertThrows(FichierIncorrectException.class, ()->{
@@ -38,6 +47,11 @@ class LabyrintheTest {
         assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
     }
 
+    /**
+     * Test la methode chargerLabyrinthe
+     * en verifiant si l'exception
+     * pas de sortie est bien lancee
+     */
     @Test
     public void test_charger_pasSortie(){
         Exception exception = assertThrows(FichierIncorrectException.class, ()->{
