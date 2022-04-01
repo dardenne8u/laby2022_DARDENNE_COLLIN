@@ -18,6 +18,18 @@ class Labyrinthe{
     public static final char SORTIE = 'S';
     public static final char VIDE = '.';
 
+    public Labyrinthe(){
+        this.personnage =null;
+        this.sortie = null;
+        this.murs = null;
+    }
+
+    public Labyrinthe(Personnage p, Sortie s, boolean[][] m){
+        this.personnage = p;
+        this.sortie = s;
+        this.murs = m;
+    }
+
 
 
     //Attributes
@@ -185,4 +197,30 @@ class Labyrinthe{
         return res;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        Labyrinthe laby = (Labyrinthe) obj;
+        // verification personnage et sortie
+        boolean bonPetS = this.personnage.equals(laby.personnage) && this.sortie.equals(laby.sortie);
+
+
+        // verification taille tableau
+        boolean bonnetaille = this.murs.length == laby.murs.length && this.murs[0].length == laby.murs[0].length;
+
+        // verification tableau
+        boolean memetab = false;
+
+        if (bonnetaille){
+            for(int i=0; i<this.murs.length; i++){
+
+                for(int j=0; j<this.murs[0].length; j++){
+                    memetab = this.murs[i][j] == laby.murs[i][j];
+                }
+                // sort de la boucle si jamais quelque chose n'est pas egal
+                if (!memetab) break;
+            }
+        }
+
+        return bonPetS && bonnetaille && memetab;
+    }
 }
