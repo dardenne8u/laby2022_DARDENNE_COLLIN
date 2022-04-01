@@ -64,4 +64,39 @@ class LabyrintheTest {
         assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
     }
 
+    /**
+     * Test la methode deplacerPerso sans erreur
+     * @throws FichierIncorrectException Format fichier incorrecte
+     * @throws IOException Lecture du fichier impossible
+     * @throws ActionInconnueException Action demandee inconnue
+     */
+    @Test
+    public void test_deplacer() throws FichierIncorrectException, IOException, ActionInconnueException {
+        // Initialsation
+        Labyrinthe atester = Labyrinthe.chargerLabyrinthe("laby/laby0.txt");
+        Personnage pAttendu = new Personnage(2,1);
+        // Appel de la methode
+        atester.deplacerPerso(Labyrinthe.GAUCHE);
+
+        // Test de la postion
+        assertEquals(pAttendu, atester.personnage, "Personnage au mauvais endroit !");
+    }
+
+    /**
+     * Test la methode deplacerPerso
+     * en verifiant si l'exception est bien
+     * lancee
+     * @throws FichierIncorrectException format fichier incorrect
+     * @throws IOException lecture du fichier impossible
+     */
+    @Test
+    public void test_deplacer_actionInconnu() throws FichierIncorrectException, IOException {
+        Labyrinthe atester = Labyrinthe.chargerLabyrinthe("laby/laby0.txt");
+
+        // test de l'envoi de l'exception
+        assertThrows(ActionInconnueException.class, ()->{
+            atester.deplacerPerso("qzpdnqoif");
+        });
+    }
+
 }
