@@ -57,10 +57,9 @@ class LabyrintheTest {
     }
 
     /**
-     * Teste si un objet Labyrinthe construit avec
-     * a partir d'un personnage, d'une sortie et d'un
-     * tableau de murs a bien ses attributs qui
-     * correspondent aux paramètres.
+     * Teste si un objet Labyrinthe renvoie bien
+     * le caractere X avec la methode getChar lorsque
+     * la case est un mur.
      */
     @Test
     public void test_getChar_mur ()
@@ -85,8 +84,72 @@ class LabyrintheTest {
         //Appel de la methode
         char res = laby.getChar(0,0);
 
-        //Tests
-        assertEquals('X', res, "doit renvoyer un mur");
+        //Test
+        assertEquals('X', res, "doit renvoyer le caractere X");
+    }
+
+    /**
+     * Teste si un objet Labyrinthe renvoie bien
+     * le caractere P avec la methode getChar lorsqu'il
+     * s'agit de la case ou se situe le personnage.
+     */
+    @Test
+    public void test_getChar_pj ()
+    {
+        //Initialisation
+        Labyrinthe laby;
+        boolean[][] murs;
+
+        //Preparation des donnees
+        murs = new boolean[5][7];
+        murs[0] = new boolean[] {true,true,true,true,true,true,true};
+        murs[1] = new boolean[] {true,false,false,false,false,false,true};
+        murs[2] = new boolean[] {true,false,false,false,false,false,true};
+        murs[3] = new boolean[] {true,false,false,false,false,false,true};
+        murs[4] = new boolean[] {true,true,true,true,true,true,true};
+
+        Personnage p = new Personnage(2,3);
+        Sortie s = new Sortie(1,1);
+
+        laby = new Labyrinthe(p, s, murs);
+
+        //Appel de la methode
+        char res = laby.getChar(2,3);
+
+        //Test
+        assertEquals('P', res, "doit renvoyer le caractere P");
+    }
+
+    /**
+     * Teste si un objet Labyrinthe renvoie bien
+     * le caractere S avec la methode getChar lorsqu'il
+     * s'agit de la case ou se situe la sortie.
+     */
+    @Test
+    public void test_getChar_sortie ()
+    {
+        //Initialisation
+        Labyrinthe laby;
+        boolean[][] murs;
+
+        //Preparation des donnees
+        murs = new boolean[5][7];
+        murs[0] = new boolean[] {true,true,true,true,true,true,true};
+        murs[1] = new boolean[] {true,false,false,false,false,false,true};
+        murs[2] = new boolean[] {true,false,false,false,false,false,true};
+        murs[3] = new boolean[] {true,false,false,false,false,false,true};
+        murs[4] = new boolean[] {true,true,true,true,true,true,true};
+
+        Personnage p = new Personnage(2,3);
+        Sortie s = new Sortie(1,1);
+
+        laby = new Labyrinthe(p, s, murs);
+
+        //Appel de la methode
+        char res = laby.getChar(1,1);
+
+        //Test
+        assertEquals('S', res, "doit renvoyer le caractere S");
     }
 
 
