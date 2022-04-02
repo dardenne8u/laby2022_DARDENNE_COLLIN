@@ -6,6 +6,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LabyrintheTest {
 
+    //Global attributes
+    Labyrinthe laby;
+    boolean[][] murs;
+    Personnage p;
+    Sortie s;
+
+
+    //Methods
     /**
      * Teste si un objet Labyrinthe construit avec
      * le constructeur vide a bien ses attributs
@@ -15,7 +23,7 @@ class LabyrintheTest {
     public void test_Labyrinthe_constructeurVide ()
     {
         //Initialisation
-        Labyrinthe laby = new Labyrinthe();
+        laby = new Labyrinthe();
 
         //Tests
         assertNull(laby.personnage, "doit etre null");
@@ -32,10 +40,6 @@ class LabyrintheTest {
     @Test
     public void test_Labyrinthe_constructeurParams ()
     {
-        //Initialisation
-        Labyrinthe laby;
-        boolean[][] murs;
-
         //Preparation des donnees
         murs = new boolean[5][7];
         murs[0] = new boolean[] {true,true,true,true,true,true,true};
@@ -44,8 +48,8 @@ class LabyrintheTest {
         murs[3] = new boolean[] {true,false,false,false,false,false,true};
         murs[4] = new boolean[] {true,true,true,true,true,true,true};
 
-        Personnage p = new Personnage(2,3);
-        Sortie s = new Sortie(1,1);
+        p = new Personnage(2,3);
+        s = new Sortie(1,1);
 
         laby = new Labyrinthe(p, s, murs);
 
@@ -63,10 +67,6 @@ class LabyrintheTest {
     @Test
     public void test_getChar_mur ()
     {
-        //Initialisation
-        Labyrinthe laby;
-        boolean[][] murs;
-
         //Preparation des donnees
         murs = new boolean[5][7];
         murs[0] = new boolean[] {true,true,true,true,true,true,true};
@@ -75,8 +75,8 @@ class LabyrintheTest {
         murs[3] = new boolean[] {true,false,false,false,false,false,true};
         murs[4] = new boolean[] {true,true,true,true,true,true,true};
 
-        Personnage p = new Personnage(2,3);
-        Sortie s = new Sortie(1,1);
+        p = new Personnage(2,3);
+        s = new Sortie(1,1);
 
         laby = new Labyrinthe(p, s, murs);
 
@@ -95,10 +95,6 @@ class LabyrintheTest {
     @Test
     public void test_getChar_pj ()
     {
-        //Initialisation
-        Labyrinthe laby;
-        boolean[][] murs;
-
         //Preparation des donnees
         murs = new boolean[5][7];
         murs[0] = new boolean[] {true,true,true,true,true,true,true};
@@ -107,8 +103,8 @@ class LabyrintheTest {
         murs[3] = new boolean[] {true,false,false,false,false,false,true};
         murs[4] = new boolean[] {true,true,true,true,true,true,true};
 
-        Personnage p = new Personnage(2,3);
-        Sortie s = new Sortie(1,1);
+        p = new Personnage(2,3);
+        s = new Sortie(1,1);
 
         laby = new Labyrinthe(p, s, murs);
 
@@ -127,10 +123,6 @@ class LabyrintheTest {
     @Test
     public void test_getChar_sortie ()
     {
-        //Initialisation
-        Labyrinthe laby;
-        boolean[][] murs;
-
         //Preparation des donnees
         murs = new boolean[5][7];
         murs[0] = new boolean[] {true,true,true,true,true,true,true};
@@ -139,8 +131,8 @@ class LabyrintheTest {
         murs[3] = new boolean[] {true,false,false,false,false,false,true};
         murs[4] = new boolean[] {true,true,true,true,true,true,true};
 
-        Personnage p = new Personnage(2,3);
-        Sortie s = new Sortie(1,1);
+        p = new Personnage(2,3);
+        s = new Sortie(1,1);
 
         laby = new Labyrinthe(p, s, murs);
 
@@ -159,10 +151,6 @@ class LabyrintheTest {
     @Test
     public void test_getChar_vide ()
     {
-        //Initialisation
-        Labyrinthe laby;
-        boolean[][] murs;
-
         //Preparation des donnees
         murs = new boolean[5][7];
         murs[0] = new boolean[] {true,true,true,true,true,true,true};
@@ -171,8 +159,8 @@ class LabyrintheTest {
         murs[3] = new boolean[] {true,false,false,false,false,false,true};
         murs[4] = new boolean[] {true,true,true,true,true,true,true};
 
-        Personnage p = new Personnage(2,3);
-        Sortie s = new Sortie(1,1);
+        p = new Personnage(2,3);
+        s = new Sortie(1,1);
 
         laby = new Labyrinthe(p, s, murs);
 
@@ -183,7 +171,9 @@ class LabyrintheTest {
         assertEquals('.', res, "doit renvoyer le caractere .");
     }
 
+
     //getSuivant, deplacerPerso, toString
+
 
     /**
      * Teste si etreFini renvoie false lorsque
@@ -193,10 +183,6 @@ class LabyrintheTest {
     @Test
     public void test_etreFini_fauxX ()
     {
-        //Initialisation
-        Labyrinthe laby;
-        boolean[][] murs;
-
         //Preparation des donnees
         murs = new boolean[5][7];
         murs[0] = new boolean[] {true,true,true,true,true,true,true};
@@ -205,8 +191,8 @@ class LabyrintheTest {
         murs[3] = new boolean[] {true,false,false,false,false,false,true};
         murs[4] = new boolean[] {true,true,true,true,true,true,true};
 
-        Personnage p = new Personnage(2,1);
-        Sortie s = new Sortie(1,1);
+        p = new Personnage(2,1);
+        s = new Sortie(1,1);
 
         laby = new Labyrinthe(p, s, murs);
 
@@ -214,7 +200,7 @@ class LabyrintheTest {
         boolean res = laby.etreFini();
 
         //Test
-        assertEquals(false, res, "doit etre faux");
+        assertFalse(res, "doit etre faux");
     }
 
     /**
@@ -225,10 +211,6 @@ class LabyrintheTest {
     @Test
     public void test_etreFini_fauxY ()
     {
-        //Initialisation
-        Labyrinthe laby;
-        boolean[][] murs;
-
         //Preparation des donnees
         murs = new boolean[5][7];
         murs[0] = new boolean[] {true,true,true,true,true,true,true};
@@ -237,8 +219,8 @@ class LabyrintheTest {
         murs[3] = new boolean[] {true,false,false,false,false,false,true};
         murs[4] = new boolean[] {true,true,true,true,true,true,true};
 
-        Personnage p = new Personnage(1,3);
-        Sortie s = new Sortie(1,1);
+        p = new Personnage(1,3);
+        s = new Sortie(1,1);
 
         laby = new Labyrinthe(p, s, murs);
 
@@ -246,7 +228,7 @@ class LabyrintheTest {
         boolean res = laby.etreFini();
 
         //Test
-        assertEquals(false, res, "doit etre faux");
+        assertFalse(res, "doit etre faux");
     }
 
     /**
@@ -257,10 +239,6 @@ class LabyrintheTest {
     @Test
     public void test_etreFini_vrai ()
     {
-        //Initialisation
-        Labyrinthe laby;
-        boolean[][] murs;
-
         //Preparation des donnees
         murs = new boolean[5][7];
         murs[0] = new boolean[] {true,true,true,true,true,true,true};
@@ -269,8 +247,8 @@ class LabyrintheTest {
         murs[3] = new boolean[] {true,false,false,false,false,false,true};
         murs[4] = new boolean[] {true,true,true,true,true,true,true};
 
-        Personnage p = new Personnage(1,1);
-        Sortie s = new Sortie(1,1);
+        p = new Personnage(1,1);
+        s = new Sortie(1,1);
 
         laby = new Labyrinthe(p, s, murs);
 
@@ -278,7 +256,7 @@ class LabyrintheTest {
         boolean res = laby.etreFini();
 
         //Test
-        assertEquals(true, res, "doit etre vrai");
+        assertTrue(res, "doit etre vrai");
     }
 
 
@@ -294,7 +272,7 @@ class LabyrintheTest {
         Labyrinthe atester = Labyrinthe.chargerLabyrinthe("laby/laby0.txt");
 
         // Labyrinthe qu'on doit obtenir
-        boolean[][] murs = new boolean[5][7];
+        murs = new boolean[5][7];
         murs[0] = new boolean[] {true,true,true,true,true,true,true};
         murs[1] = new boolean[] {true,false,false,false,false,false,true};
         murs[2] = new boolean[] {true,false,false,false,false,false,true};
