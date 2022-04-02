@@ -37,7 +37,7 @@ class LabyrintheTest {
         Labyrinthe laby;
         boolean[][] murs;
 
-        //Affectation des valeurs aux attributs
+        //Preparation des donnees
         murs = new boolean[5][7];
         murs[0] = new boolean[] {true,true,true,true,true,true,true};
         murs[1] = new boolean[] {true,false,false,false,false,false,true};
@@ -54,6 +54,39 @@ class LabyrintheTest {
         assertEquals(new Personnage(2,3), laby.personnage, "doit etre le meme personnage");
         assertEquals(new Sortie(1,1), laby.sortie, "doit la meme sortie");
         assertEquals(murs, laby.murs, "doit etre le meme attribut murs");
+    }
+
+    /**
+     * Teste si un objet Labyrinthe construit avec
+     * a partir d'un personnage, d'une sortie et d'un
+     * tableau de murs a bien ses attributs qui
+     * correspondent aux paramètres.
+     */
+    @Test
+    public void test_getChar_mur ()
+    {
+        //Initialisation
+        Labyrinthe laby;
+        boolean[][] murs;
+
+        //Preparation des donnees
+        murs = new boolean[5][7];
+        murs[0] = new boolean[] {true,true,true,true,true,true,true};
+        murs[1] = new boolean[] {true,false,false,false,false,false,true};
+        murs[2] = new boolean[] {true,false,false,false,false,false,true};
+        murs[3] = new boolean[] {true,false,false,false,false,false,true};
+        murs[4] = new boolean[] {true,true,true,true,true,true,true};
+
+        Personnage p = new Personnage(2,3);
+        Sortie s = new Sortie(1,1);
+
+        laby = new Labyrinthe(p, s, murs);
+
+        //Appel de la methode
+        char res = laby.getChar(0,0);
+
+        //Tests
+        assertEquals('X', res, "doit renvoyer un mur");
     }
 
 
