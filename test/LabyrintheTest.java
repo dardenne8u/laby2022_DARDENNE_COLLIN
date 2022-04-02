@@ -8,6 +8,24 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class LabyrintheTest {
 
     /**
+     * Teste si un objet Labyrinthe construit avec
+     * le constructeur vide a bien ses attributs
+     * qui valent null.
+     */
+    @Test
+    public void test_constructeur_vide ()
+    {
+        //Initialisation
+        Labyrinthe laby = new Labyrinthe();
+
+        //Tests
+        assertEquals(null, laby.personnage, "doit etre null");
+        assertEquals(null, laby.sortie, "doit etre null");
+        assertEquals(null, laby.murs, "doit etre null");
+    }
+
+
+    /**
      * Test la methode chargerLabyrinthe lors que le fichier
      * n'a aucune erreur de format
      * @throws FichierIncorrectException Mauvais format de lecture pour le fichier
