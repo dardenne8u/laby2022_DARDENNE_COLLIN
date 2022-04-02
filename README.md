@@ -11,10 +11,10 @@ lorsqu'il rencontre un obstacle (un mur).
 ###
 ### Difficultés rencontrées
 ####Les problèmes suivants ont été résolus :
-* Dans MainLaby.java, la boucle while ne s'arrêtait 
+* Dans la classe `MainLaby`, la boucle while ne s'arrêtait 
 pas lorsque le joueur avait atteint la sortie.
 
-* Dans Labyrinthe.java, lancement de FichierIncorrectException 
+* Dans la classe `Labyrinthe`, lancement de FichierIncorrectException 
 alors que les nombres de lignes et colonnes étaient 
 correctes (ligne 214).
 
@@ -51,7 +51,8 @@ correctement.
 * `test_charger_PasDeProbleme()` : 
 
 ####Echoués :
-*
+* 
 
 ###
 ### Couverture des tests et explications
+Nous avons essayé de couvrir un maximum de cas dans nos tests.
