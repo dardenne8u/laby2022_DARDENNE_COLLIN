@@ -2,8 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class LabyrintheTest {
 
@@ -19,9 +18,9 @@ class LabyrintheTest {
         Labyrinthe laby = new Labyrinthe();
 
         //Tests
-        assertEquals(null, laby.personnage, "doit etre null");
-        assertEquals(null, laby.sortie, "doit etre null");
-        assertEquals(null, laby.murs, "doit etre null");
+        assertNull(laby.personnage, "doit etre null");
+        assertNull(laby.sortie, "doit etre null");
+        assertNull(laby.murs, "doit etre null");
     }
 
     /**
