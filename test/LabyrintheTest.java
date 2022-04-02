@@ -183,6 +183,104 @@ class LabyrintheTest {
         assertEquals('.', res, "doit renvoyer le caractere .");
     }
 
+    //getSuivant, deplacerPerso, toString
+
+    /**
+     * Teste si etreFini renvoie false lorsque
+     * les coordonnees x du personnage sont differentes
+     * de celles de la sortie
+     */
+    @Test
+    public void test_etreFini_fauxX ()
+    {
+        //Initialisation
+        Labyrinthe laby;
+        boolean[][] murs;
+
+        //Preparation des donnees
+        murs = new boolean[5][7];
+        murs[0] = new boolean[] {true,true,true,true,true,true,true};
+        murs[1] = new boolean[] {true,false,false,false,false,false,true};
+        murs[2] = new boolean[] {true,false,false,false,false,false,true};
+        murs[3] = new boolean[] {true,false,false,false,false,false,true};
+        murs[4] = new boolean[] {true,true,true,true,true,true,true};
+
+        Personnage p = new Personnage(2,1);
+        Sortie s = new Sortie(1,1);
+
+        laby = new Labyrinthe(p, s, murs);
+
+        //Appel de la methode
+        boolean res = laby.etreFini();
+
+        //Test
+        assertEquals(false, res, "doit etre faux");
+    }
+
+    /**
+     * Teste si etreFini renvoie false lorsque
+     * les coordonnees y du personnage sont differentes
+     * de celles de la sortie
+     */
+    @Test
+    public void test_etreFini_fauxY ()
+    {
+        //Initialisation
+        Labyrinthe laby;
+        boolean[][] murs;
+
+        //Preparation des donnees
+        murs = new boolean[5][7];
+        murs[0] = new boolean[] {true,true,true,true,true,true,true};
+        murs[1] = new boolean[] {true,false,false,false,false,false,true};
+        murs[2] = new boolean[] {true,false,false,false,false,false,true};
+        murs[3] = new boolean[] {true,false,false,false,false,false,true};
+        murs[4] = new boolean[] {true,true,true,true,true,true,true};
+
+        Personnage p = new Personnage(1,3);
+        Sortie s = new Sortie(1,1);
+
+        laby = new Labyrinthe(p, s, murs);
+
+        //Appel de la methode
+        boolean res = laby.etreFini();
+
+        //Test
+        assertEquals(false, res, "doit etre faux");
+    }
+
+    /**
+     * Teste si etreFini renvoie false lorsque
+     * les coordonnees x et y du personnage sont
+     * egales a celles de la sortie.
+     */
+    @Test
+    public void test_etreFini_vrai ()
+    {
+        //Initialisation
+        Labyrinthe laby;
+        boolean[][] murs;
+
+        //Preparation des donnees
+        murs = new boolean[5][7];
+        murs[0] = new boolean[] {true,true,true,true,true,true,true};
+        murs[1] = new boolean[] {true,false,false,false,false,false,true};
+        murs[2] = new boolean[] {true,false,false,false,false,false,true};
+        murs[3] = new boolean[] {true,false,false,false,false,false,true};
+        murs[4] = new boolean[] {true,true,true,true,true,true,true};
+
+        Personnage p = new Personnage(1,1);
+        Sortie s = new Sortie(1,1);
+
+        laby = new Labyrinthe(p, s, murs);
+
+        //Appel de la methode
+        boolean res = laby.etreFini();
+
+        //Test
+        assertEquals(true, res, "doit etre vrai");
+    }
+
 
     /**
      * Test la methode chargerLabyrinthe lors que le fichier
@@ -208,6 +306,7 @@ class LabyrintheTest {
         // Test du labyrinthe
         assertEquals(resultat, atester, "Mauvais labyrinthe");
     }
+
 
     /**
      * Test la methode chargerLabyrinthe en verifiant si l'exception deux sortie est bien lancee
