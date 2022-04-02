@@ -152,6 +152,38 @@ class LabyrintheTest {
         assertEquals('S', res, "doit renvoyer le caractere S");
     }
 
+    /**
+     * Teste si un objet Labyrinthe renvoie bien
+     * le caractere . avec la methode getChar lorsqu'il
+     * s'agit d'une case vide.
+     */
+    @Test
+    public void test_getChar_vide ()
+    {
+        //Initialisation
+        Labyrinthe laby;
+        boolean[][] murs;
+
+        //Preparation des donnees
+        murs = new boolean[5][7];
+        murs[0] = new boolean[] {true,true,true,true,true,true,true};
+        murs[1] = new boolean[] {true,false,false,false,false,false,true};
+        murs[2] = new boolean[] {true,false,false,false,false,false,true};
+        murs[3] = new boolean[] {true,false,false,false,false,false,true};
+        murs[4] = new boolean[] {true,true,true,true,true,true,true};
+
+        Personnage p = new Personnage(2,3);
+        Sortie s = new Sortie(1,1);
+
+        laby = new Labyrinthe(p, s, murs);
+
+        //Appel de la methode
+        char res = laby.getChar(1,2);
+
+        //Test
+        assertEquals('.', res, "doit renvoyer le caractere .");
+    }
+
 
     /**
      * Test la methode chargerLabyrinthe lors que le fichier
