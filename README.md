@@ -20,7 +20,24 @@ correctes (ligne 214).
 
 ###
 ### Choix de programmation
+Nous avons d'abord programmé la classe `Position`,
+puis les classes `Personnage` et `Sorties` permettant 
+respectivement de créer des objets de type Personnage
+et Sortie, et qui héritent de Position.
 
+Puis nous avons codé la classe `Labyrinthe`, qui crée 
+des objets de type Labyrinthe et qui possède
+des attributs de type Personnage et Sortie ; ainsi que 
+`ActionInconnueException` et `FichierIncorrectException`
+qui sont des exceptions utilisées dans Labyrinthe et 
+MainLaby.
+
+Nous avons ensuite réalisé `MainLaby`, qui permet 
+d'exécuter le jeu dans le terminal.
+
+Enfin, nous avons programmé `LabyrintheTest` qui permet 
+de vérifier que notre classe Labyrinthe fonctionne 
+correctement.
 ###
 ### Lancement de l'application
 1. Compiler les fichiers du répertoire src.
@@ -31,7 +48,7 @@ correctes (ligne 214).
 ###
 ### Résumé des tests
 #### Réussis :
-*
+* `test_charger_PasDeProbleme()` : 
 
 ####Echoués :
 *
