@@ -195,7 +195,7 @@ class Labyrinthe{
             y = Integer.parseInt(br.readLine());
         }
         catch (NumberFormatException e){
-            throw new FichierIncorrectException("probleme numero ligne ou colonne");
+            throw new FichierIncorrectException("Format des nombres invalides !");
         }
 
         // Initialisation des variables pour la boucle
