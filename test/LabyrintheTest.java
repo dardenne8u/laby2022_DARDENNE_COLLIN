@@ -171,8 +171,61 @@ class LabyrintheTest {
         assertEquals('.', res, "doit renvoyer le caractere .");
     }
 
+    @Test
+    public void test_getSuivant_gauche() throws ActionInconnueException {
+        // Preparation des donnees
+        int[] valeurBase = {2,2};
+        int[] valeurAttendu = {2,1};
 
-    //TODO : getSuivant
+        // Test
+        int[] actual = Labyrinthe.getSuivant(valeurBase[0], valeurBase[1], Labyrinthe.GAUCHE);
+
+        // Verification
+        assertArrayEquals(valeurAttendu, actual, "Les valeurs ne sont pas les meme");
+
+    }
+
+    @Test
+    public void test_getSuivant_droite() throws ActionInconnueException {
+        // Preparation des donnees
+        int[] valeurBase = {2,2};
+        int[] valeurAttendu = {2,3};
+
+        // Test
+        int[] actual = Labyrinthe.getSuivant(valeurBase[0], valeurBase[1], Labyrinthe.DROITE);
+
+        // Verification
+        assertArrayEquals(valeurAttendu, actual, "Les valeurs ne sont pas les meme");
+
+    }
+
+    @Test
+    public void test_getSuivant_haut() throws ActionInconnueException {
+        // Preparation des donnees
+        int[] valeurBase = {2,2};
+        int[] valeurAttendu = {1,2};
+
+        // Test
+        int[] actual = Labyrinthe.getSuivant(valeurBase[0], valeurBase[1], Labyrinthe.HAUT);
+
+        // Verification
+        assertArrayEquals(valeurAttendu, actual, "Les valeurs ne sont pas les meme");
+
+    }
+
+    @Test
+    public void test_getSuivant_bas() throws ActionInconnueException {
+        // Preparation des donnees
+        int[] valeurBase = {2,2};
+        int[] valeurAttendu = {3,2};
+
+        // Test
+        int[] actual = Labyrinthe.getSuivant(valeurBase[0], valeurBase[1], Labyrinthe.BAS);
+
+        // Verification
+        assertArrayEquals(valeurAttendu, actual, "Les valeurs ne sont pas les meme");
+
+    }
 
 
     /**
@@ -411,8 +464,6 @@ class LabyrintheTest {
      * verifiant si l'exception pas assez de lignes/**
      * Test de la methode chargerLabyrinthe
      * verifiant si l'exception est bien lancee
-     */
-     * est bien lancee
      */
     @Test
     public void test_charger_pasAssezLigne(){
