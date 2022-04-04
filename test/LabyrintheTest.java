@@ -331,6 +331,11 @@ class LabyrintheTest {
         assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
     }
 
+    /**
+     * Test methode chargerLabyrinthe
+     * verifiant si l'exception deux personnages
+     * est bien lancee
+     */
     @Test
     public void test_charger_deuxPerso(){
         Exception exception = assertThrows(FichierIncorrectException.class, ()-> Labyrinthe.chargerLabyrinthe("laby/laby_deuxPerso.txt"));
@@ -356,6 +361,11 @@ class LabyrintheTest {
         assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
     }
 
+    /**
+     * Test de la methode chargerLabyrinthe
+     * verifiant si l'exception pas de personnages
+     * est bien lancee
+     */
     @Test
     public void test_charger_pasPerso(){
         Exception exception = assertThrows(FichierIncorrectException.class, ()-> Labyrinthe.chargerLabyrinthe("laby/laby_pasPerso.txt"));
@@ -366,6 +376,11 @@ class LabyrintheTest {
         assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
     }
 
+    /**
+     * Test de la methode chargerLabyrinthe
+     * verifiant si l'exception pas assez de colonnes
+     * est bien lancee
+     */
     @Test
     public void test_charger_pasAssezColonnes(){
         Exception exception = assertThrows(FichierIncorrectException.class, ()-> Labyrinthe.chargerLabyrinthe("laby/laby_pasAssezColonnes.txt"));
@@ -376,6 +391,11 @@ class LabyrintheTest {
         assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
     }
 
+    /**
+     * Test de la methode chargerLabyrinthe
+     * verifiant si l'exception trop de colonnes
+     * est bien lancee
+     */
     @Test
     public void test_charger_tropColonnes(){
         Exception exception = assertThrows(FichierIncorrectException.class, ()-> Labyrinthe.chargerLabyrinthe("laby/laby_tropColonnes.txt"));
@@ -386,6 +406,14 @@ class LabyrintheTest {
         assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
     }
 
+    /**
+     * Test de la methode chargerLabyrinthe
+     * verifiant si l'exception pas assez de lignes/**
+     * Test de la methode chargerLabyrinthe
+     * verifiant si l'exception est bien lancee
+     */
+     * est bien lancee
+     */
     @Test
     public void test_charger_pasAssezLigne(){
         Exception exception = assertThrows(FichierIncorrectException.class, ()-> Labyrinthe.chargerLabyrinthe("laby/laby_pasAssezLigne.txt"));
@@ -396,6 +424,11 @@ class LabyrintheTest {
         assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
     }
 
+    /**
+     * Test de la methode chargerLabyrinthe
+     * verifiant si l'exception trop de lignes
+     * est bien lancee
+     */
     @Test
     public void test_charger_tropLigne(){
         Exception exception = assertThrows(FichierIncorrectException.class, ()-> Labyrinthe.chargerLabyrinthe("laby/laby_tropLigne.txt"));
@@ -406,6 +439,11 @@ class LabyrintheTest {
         assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
     }
 
+    /**
+     * Test de la methode chargerLabyrinthe
+     * verifiant si l'exception nombre invalide
+     * est bien lancee
+     */
     @Test
     public void test_charger_NombreInvalide(){
         Exception exception = assertThrows(FichierIncorrectException.class, ()-> Labyrinthe.chargerLabyrinthe("laby/laby_NombreInvalide.txt"));
@@ -416,6 +454,11 @@ class LabyrintheTest {
         assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
     }
 
+    /**
+     * Test de la methode chargerLabyrinthe
+     * verifiant si l'exception caractere inconnu
+     * est bien lancee
+     */
     @Test
     public void test_charger_CaractereInconnu(){
         Exception exception = assertThrows(FichierIncorrectException.class, ()-> Labyrinthe.chargerLabyrinthe("laby/laby_CaractereInconnu.txt"));
@@ -427,20 +470,71 @@ class LabyrintheTest {
     }
 
     /**
-     * Test la methode deplacerPerso sans erreur
+     * Test la methode deplacerPerso sur la gauche sans erreur
      * @throws FichierIncorrectException Format fichier incorrecte
      * @throws IOException Lecture du fichier impossible
      * @throws ActionInconnueException Action demandee inconnue
      */
     @Test
-    public void test_deplacer() throws FichierIncorrectException, IOException, ActionInconnueException {
+    public void test_deplacer_Gauche() throws FichierIncorrectException, IOException, ActionInconnueException {
         // Initialsation
         Labyrinthe atester = Labyrinthe.chargerLabyrinthe("laby/laby0.txt");
-        Personnage pAttendu = new Personnage(3,5);
+        Personnage pAttendu = new Personnage(2,1);
         // Appel de la methode
         atester.deplacerPerso(Labyrinthe.GAUCHE);
+
+        // Test de la postion
+        assertEquals(pAttendu, atester.personnage, "Personnage au mauvais endroit !");
+    }
+
+    /**
+     * Test la methode deplacerPerso sur la droite sans erreur
+     * @throws FichierIncorrectException Format fichier incorrecte
+     * @throws IOException Lecture du fichier impossible
+     * @throws ActionInconnueException Action demandee inconnue
+     */
+    @Test
+    public void test_deplacer_Droite() throws FichierIncorrectException, IOException, ActionInconnueException {
+        // Initialsation
+        Labyrinthe atester = Labyrinthe.chargerLabyrinthe("laby/laby0.txt");
+        Personnage pAttendu = new Personnage(2,5);
+        // Appel de la methode
         atester.deplacerPerso(Labyrinthe.DROITE);
+
+        // Test de la postion
+        assertEquals(pAttendu, atester.personnage, "Personnage au mauvais endroit !");
+    }
+
+    /**
+     * Test la methode deplacerPerso vers le haut sans erreur
+     * @throws FichierIncorrectException Format fichier incorrecte
+     * @throws IOException Lecture du fichier impossible
+     * @throws ActionInconnueException Action demandee inconnue
+     */
+    @Test
+    public void test_deplacer_Haut() throws FichierIncorrectException, IOException, ActionInconnueException {
+        // Initialsation
+        Labyrinthe atester = Labyrinthe.chargerLabyrinthe("laby/laby0.txt");
+        Personnage pAttendu = new Personnage(1,3);
+        // Appel de la methode
         atester.deplacerPerso(Labyrinthe.HAUT);
+
+        // Test de la postion
+        assertEquals(pAttendu, atester.personnage, "Personnage au mauvais endroit !");
+    }
+
+    /**
+     * Test la methode deplacerPerso vers le bas sans erreur
+     * @throws FichierIncorrectException Format fichier incorrecte
+     * @throws IOException Lecture du fichier impossible
+     * @throws ActionInconnueException Action demandee inconnue
+     */
+    @Test
+    public void test_deplacer_Bas() throws FichierIncorrectException, IOException, ActionInconnueException {
+        // Initialsation
+        Labyrinthe atester = Labyrinthe.chargerLabyrinthe("laby/laby0.txt");
+        Personnage pAttendu = new Personnage(3,3);
+        // Appel de la methode
         atester.deplacerPerso(Labyrinthe.BAS);
 
         // Test de la postion
