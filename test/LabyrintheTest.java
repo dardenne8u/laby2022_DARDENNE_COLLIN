@@ -333,9 +333,7 @@ class LabyrintheTest {
      */
     @Test
     public void test_charger_deuxSortie(){
-        Exception exception = assertThrows(FichierIncorrectException.class, ()->{
-            Labyrinthe atester = Labyrinthe.chargerLabyrinthe("laby/laby_deuxSortie.txt");
-        });
+        Exception exception = assertThrows(FichierIncorrectException.class, ()-> Labyrinthe.chargerLabyrinthe("laby/laby_deuxSortie.txt"));
 
         String msgAttendu = "plusieurs sorties";
         String msgRecu = exception.getMessage();
@@ -350,9 +348,7 @@ class LabyrintheTest {
      */
     @Test
     public void test_charger_pasSortie(){
-        Exception exception = assertThrows(FichierIncorrectException.class, ()->{
-            Labyrinthe atester = Labyrinthe.chargerLabyrinthe("laby/laby_pasSortie.txt");
-        });
+        Exception exception = assertThrows(FichierIncorrectException.class, ()-> Labyrinthe.chargerLabyrinthe("laby/laby_pasSortie.txt"));
 
         String msgAttendu = "Sortie inconnue";
         String msgRecu = exception.getMessage();
@@ -390,9 +386,7 @@ class LabyrintheTest {
         Labyrinthe atester = Labyrinthe.chargerLabyrinthe("laby/laby0.txt");
 
         // test de l'envoi de l'exception
-        assertThrows(ActionInconnueException.class, ()->{
-            atester.deplacerPerso("qzpdnqoif");
-        });
+        assertThrows(ActionInconnueException.class, ()-> atester.deplacerPerso("qzpdnqoif"));
     }
 
 }
