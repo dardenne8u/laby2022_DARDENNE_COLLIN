@@ -406,6 +406,16 @@ class LabyrintheTest {
         assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
     }
 
+    @Test
+    public void test_charger_NombreInvalide(){
+        Exception exception = assertThrows(FichierIncorrectException.class, ()-> Labyrinthe.chargerLabyrinthe("laby/laby_NombreInvalide.txt"));
+
+        String msgAttendu = "Format des nombres invalides !";
+        String msgRecu = exception.getMessage();
+
+        assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
+    }
+
     /**
      * Test la methode deplacerPerso sans erreur
      * @throws FichierIncorrectException Format fichier incorrecte
