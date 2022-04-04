@@ -366,6 +366,26 @@ class LabyrintheTest {
         assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
     }
 
+    @Test
+    public void test_charger_pasAssezColonnes(){
+        Exception exception = assertThrows(FichierIncorrectException.class, ()-> Labyrinthe.chargerLabyrinthe("laby/laby_pasAssezColonnes.txt"));
+
+        String msgAttendu = "Nombre de colonnes trop petit !";
+        String msgRecu = exception.getMessage();
+
+        assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
+    }
+
+    @Test
+    public void test_charger_tropColonnes(){
+        Exception exception = assertThrows(FichierIncorrectException.class, ()-> Labyrinthe.chargerLabyrinthe("laby/laby_tropColonnes.txt"));
+
+        String msgAttendu = "Nombre de colonnes trop grand !";
+        String msgRecu = exception.getMessage();
+
+        assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
+    }
+
     /**
      * Test la methode deplacerPerso sans erreur
      * @throws FichierIncorrectException Format fichier incorrecte
@@ -376,7 +396,7 @@ class LabyrintheTest {
     public void test_deplacer() throws FichierIncorrectException, IOException, ActionInconnueException {
         // Initialsation
         Labyrinthe atester = Labyrinthe.chargerLabyrinthe("laby/laby0.txt");
-        Personnage pAttendu = new Personnage(5,6);
+        Personnage pAttendu = new Personnage(3,5);
         // Appel de la methode
         atester.deplacerPerso(Labyrinthe.GAUCHE);
         atester.deplacerPerso(Labyrinthe.DROITE);
