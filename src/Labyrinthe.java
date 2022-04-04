@@ -9,7 +9,7 @@ class Labyrinthe{
 
     // Static attributes
     /**
-     * Attribut de deplacement
+     * Attributs de deplacement
      */
     public static final String HAUT = "haut";
     public static final String BAS = "bas";
@@ -17,7 +17,7 @@ class Labyrinthe{
     public static final String GAUCHE = "gauche";
 
     /**
-     * Attribut de format
+     * Attributs correspondant aux types des cases
      */
     public static final char MUR = 'X';
     public static final char PJ = 'P';
@@ -51,7 +51,7 @@ class Labyrinthe{
 
     /**
      * Contructeur de labyrinthe initialisant les valeurs
-     * aux parametres pour les tests unitaire
+     * aux parametres, pour les tests unitaires.
      * @param p Personnage
      * @param s Sortie
      * @param m Tableau de boolean representant les murs
@@ -63,11 +63,11 @@ class Labyrinthe{
     }
 
     /**
-     * Permet de savoir aux positions
-     * passer en parametre qu'elle case represent-elle
+     * Permet de savoir aux positions passées
+     * en parametre quelle case elle represente
      * @param x Position x de la case
      * @param y Positon y de la case
-     * @return MUR ou PJ (personnage) ou SORTIE ou VIDE
+     * @return Type de case : MUR ou PJ (personnage) ou SORTIE ou VIDE
      */
     char getChar(int x, int y)
     {
@@ -85,9 +85,9 @@ class Labyrinthe{
      * case par rapport a une autre avec une direction indiquee
      * @param x Position x de la case actuelle
      * @param y Position y de la case actuelle
-     * @param action Direction dans laquelle on veut la case adjacente
+     * @param action Direction vers laquelle on veut la case adjacente
      * @return Case adjacente a la case actuelle en fonction de la direction
-     * @throws ActionInconnueException Direction pas reconnu (n'est pas un cote adjancent)
+     * @throws ActionInconnueException Direction pas reconnue (n'est pas un cote adjancent)
      */
     static int[] getSuivant(int x, int y, String action) throws ActionInconnueException{
         int[] resPostion = new int[2];
@@ -117,8 +117,8 @@ class Labyrinthe{
     /**
      * Methode permettant de deplacer le
      * personnage dans une direction
-     * @param action direction dans laquelle on veut que le personnage y aille
-     * @throws ActionInconnueException Action inconnu (direction invalide)
+     * @param action direction vers laquelle le personnage doit aller
+     * @throws ActionInconnueException Action inconnue (direction invalide)
      */
     void deplacerPerso(String action) throws ActionInconnueException {
         // Initialisation
@@ -146,7 +146,7 @@ class Labyrinthe{
 
 
     /**
-     * Permet d'afficher le labyrinthe sous le bon format
+     * Permet d'afficher le labyrinthe dans le bon format
      * @return le labyrinthe
      */
     public String toString() {
@@ -170,8 +170,8 @@ class Labyrinthe{
 
 
     /**
-     * Permet de savoir si le personnage est sur la sortie ou non
-     * @return Vrai s'il est dessus sinon faux
+     * Permet de savoir si le personnage est sur la sortie ou non.
+     * @return Vrai s'il est dessus, faux sinon
      */
     public boolean etreFini()
     {
@@ -179,11 +179,11 @@ class Labyrinthe{
     }
 
     /**
-     * Methode permettant de generer un labyrinthe a partir d'un fichier texte
+     * Methode permettant de generer un labyrinthe a partir d'un fichier texte.
      * @param nom Nom du fichier contenent le labyrinthe
      * @return Un labyrinthe cree a partir du fichier
      * @throws IOException Probleme de lecture du fichier
-     * @throws FichierIncorrectException Pas le bon format de fichier qu'attendu
+     * @throws FichierIncorrectException Pas le bon format de fichier
      */
     public static Labyrinthe chargerLabyrinthe(String nom) throws IOException, FichierIncorrectException {
         BufferedReader br = new BufferedReader(new FileReader(nom));
@@ -214,33 +214,33 @@ class Labyrinthe{
             if (ligne.length() != res.murs[0].length)
                 throw new FichierIncorrectException("nombre colonnes ne correspond pas");
 
-            // Parcors la ligne, caractere par caractere
+            // Parcours de la ligne, caractere par caractere
             for (int posCol=0; posCol < ligne.length(); posCol++ ){
                 char c = ligne.charAt(posCol);
                 switch (c){
-                    case Labyrinthe.MUR: //Cree un mur au position posLigne et posCol
+                    case Labyrinthe.MUR: //Cree un mur aux positions posLigne et posCol
                         res.murs[posLigne][posCol] = true;
                         break;
-                    case Labyrinthe.SORTIE: // Cree une sortie s'il y en a pas, au position posLigne et posCol
+                    case Labyrinthe.SORTIE: // Cree une sortie s'il y en a pas, aux positions posLigne et posCol
                         res.murs[posLigne][posCol] = false;
 
-                        // Verifie qu'il n'y ait pas de sortie
+                        // Verifie qu'il n'y a pas de sortie
                         if (res.sortie == null)
                             res.sortie = new Sortie(posLigne, posCol);
                         else
                             throw new FichierIncorrectException("plusieurs sorties");
                         break;
-                    case Labyrinthe.VIDE: // Cree une place vide au posLigne et posCol
+                    case Labyrinthe.VIDE: // Cree une place vide aux positions posLigne et posCol
                         res.murs[posLigne][posCol] = false;
                         break;
-                    case Labyrinthe.PJ: // Cree un personnage s'il n'y en a pas, au position posLigne et posCol
+                    case Labyrinthe.PJ: // Cree un personnage s'il n'y en a pas, aux positions posLigne et posCol
                         res.murs[posLigne][posCol] = false;
 
                         // Verification qu'il n'y ait pas de personnage
                         if (res.personnage == null)
                             res.personnage = new Personnage(posLigne, posCol);
                         else
-                            throw new FichierIncorrectException("plusieurs personnages");
+                            throw new FichierIncorrectException("Plusieurs personnages");
                         break;
                     default:
                         throw new FichierIncorrectException("Caractere inconnu "+ c);
@@ -265,17 +265,16 @@ class Labyrinthe{
     }
 
     /**
-     * Permet de savoir si deux objects sont identique
-     * en fonction de ses parametres
-     * @param obj Obj dont on veut verifier son egalite
-     * @return Vrai s'ils sont egaux sinon faux
+     * Permet de savoir si deux objets sont identiques
+     * en fonction de leurs parametres.
+     * @param obj Objet dont on veut verifier l'egalite.
+     * @return Vrai si les objets sont egaux, faux sinon.
      */
     @Override
     public boolean equals(Object obj) {
         Labyrinthe laby = (Labyrinthe) obj;
         // verification personnage et sortie
         boolean bonPetS = this.personnage.equals(laby.personnage) && this.sortie.equals(laby.sortie);
-
 
         // verification taille tableau
         boolean bonnetaille = this.murs.length == laby.murs.length && this.murs[0].length == laby.murs[0].length;
