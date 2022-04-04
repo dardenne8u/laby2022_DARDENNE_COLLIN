@@ -331,6 +331,16 @@ class LabyrintheTest {
         assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
     }
 
+    @Test
+    public void test_charger_deuxPerso(){
+        Exception exception = assertThrows(FichierIncorrectException.class, ()-> Labyrinthe.chargerLabyrinthe("laby/laby_deuxPerso.txt"));
+
+        String msgAttendu = "Plusieurs personnages";
+        String msgRecu = exception.getMessage();
+
+        assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
+    }
+
     /**
      * Test la methode chargerLabyrinthe
      * en verifiant si l'exception
@@ -345,6 +355,8 @@ class LabyrintheTest {
 
         assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
     }
+
+    
 
     /**
      * Test la methode deplacerPerso sans erreur
