@@ -386,6 +386,26 @@ class LabyrintheTest {
         assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
     }
 
+    @Test
+    public void test_charger_pasAssezLigne(){
+        Exception exception = assertThrows(FichierIncorrectException.class, ()-> Labyrinthe.chargerLabyrinthe("laby/laby_pasAssezLigne.txt"));
+
+        String msgAttendu = "Nombre de ligne trop faible";
+        String msgRecu = exception.getMessage();
+
+        assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
+    }
+
+    @Test
+    public void test_charger_tropLigne(){
+        Exception exception = assertThrows(FichierIncorrectException.class, ()-> Labyrinthe.chargerLabyrinthe("laby/laby_tropLigne.txt"));
+
+        String msgAttendu = "Nombre de ligne trop grand !";
+        String msgRecu = exception.getMessage();
+
+        assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
+    }
+
     /**
      * Test la methode deplacerPerso sans erreur
      * @throws FichierIncorrectException Format fichier incorrecte
