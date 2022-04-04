@@ -172,7 +172,7 @@ class LabyrintheTest {
     }
 
 
-    //TODO : getSuivant, deplacerPerso
+    //TODO : getSuivant
 
 
     /**
@@ -411,6 +411,16 @@ class LabyrintheTest {
         Exception exception = assertThrows(FichierIncorrectException.class, ()-> Labyrinthe.chargerLabyrinthe("laby/laby_NombreInvalide.txt"));
 
         String msgAttendu = "Format des nombres invalides !";
+        String msgRecu = exception.getMessage();
+
+        assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
+    }
+
+    @Test
+    public void test_charger_CaractereInconnu(){
+        Exception exception = assertThrows(FichierIncorrectException.class, ()-> Labyrinthe.chargerLabyrinthe("laby/laby_CaractereInconnu.txt"));
+
+        String msgAttendu = "Caractere inconnu M";
         String msgRecu = exception.getMessage();
 
         assertEquals(msgAttendu, msgRecu, "Pas la meme exception");
