@@ -8,7 +8,7 @@ public class MainLaby
     {
         Scanner sc = new Scanner(System.in);
         String commande= "";
-        Labyrinthe laby = null;
+        Labyrinthe laby;
         try {
             laby = Labyrinthe.chargerLabyrinthe(args[0]);
 
@@ -41,7 +41,7 @@ public class MainLaby
         } catch (IOException e){
             System.out.println("Probleme a la lecture du fichier");
         } catch (FichierIncorrectException e){
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
 
 
