@@ -194,17 +194,7 @@ class LabyrintheTest {
 
         laby = new Labyrinthe(p, s, murs);
 
-        String expected = """
-                Etat du labyrinthe :
-                Dimensions : \t5:7
-                Personnage : \t2:3
-                Sortie :\t\t1:1
-                XXXXXXX
-                XS....X
-                X..P..X
-                X.....X
-                XXXXXXX
-                """;
+        String expected = "Etat du labyrinthe :\nDimensions : \t5:7\nPersonnage : \t2:3\nSortie :\t\t1:1\nXXXXXXX\nXS....X\nX..P..X\nX.....X\nXXXXXXX\n";
 
         //Appel de la methode
         boolean res = laby.toString().equals(expected);
@@ -366,9 +356,12 @@ class LabyrintheTest {
     public void test_deplacer() throws FichierIncorrectException, IOException, ActionInconnueException {
         // Initialsation
         Labyrinthe atester = Labyrinthe.chargerLabyrinthe("laby/laby0.txt");
-        Personnage pAttendu = new Personnage(2,1);
+        Personnage pAttendu = new Personnage(5,6);
         // Appel de la methode
         atester.deplacerPerso(Labyrinthe.GAUCHE);
+        atester.deplacerPerso(Labyrinthe.DROITE);
+        atester.deplacerPerso(Labyrinthe.HAUT);
+        atester.deplacerPerso(Labyrinthe.BAS);
 
         // Test de la postion
         assertEquals(pAttendu, atester.personnage, "Personnage au mauvais endroit !");
