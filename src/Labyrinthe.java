@@ -207,7 +207,7 @@ class Labyrinthe{
         // Parcours du fichier
         while (ligne != null){
             // S'il y a plus de ligne qu'attendu
-            if (posLigne > res.murs.length)
+            if (posLigne > res.murs.length-1)
                 throw new FichierIncorrectException("Nombre de ligne trop grand !");
 
             // S'il y a trop ou pas assez de colonne
