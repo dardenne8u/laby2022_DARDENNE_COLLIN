@@ -150,7 +150,7 @@ class Labyrinthe{
      * @return le labyrinthe
      */
     public String toString() {
-        StringBuffer sb = new StringBuffer("");
+        StringBuilder sb = new StringBuilder();
 
         sb.append("Etat du labyrinthe :\n");
         sb.append("Dimensions : \t" + this.murs.length + ":" + this.murs[0].length);
