@@ -211,8 +211,10 @@ class Labyrinthe{
                 throw new FichierIncorrectException("Nombre de ligne trop grand !");
 
             // S'il y a trop ou pas assez de colonne
-            if (ligne.length() != res.murs[0].length)
-                throw new FichierIncorrectException("nombre colonnes ne correspond pas");
+            if (ligne.length() > res.murs[0].length)
+                throw new FichierIncorrectException("Nombre de colonnes trop grand !");
+            else if (ligne.length() < res.murs[0].length)
+                throw new FichierIncorrectException("Nombre de colonnes trop petit !");
 
             // Parcours de la ligne, caractere par caractere
             for (int posCol=0; posCol < ligne.length(); posCol++ ){
