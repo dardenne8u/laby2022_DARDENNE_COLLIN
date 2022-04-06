@@ -453,7 +453,7 @@ class LabyrintheTest {
     }
 
 
-    //>Tests charger: 11
+    //>Tests chargerLabyrinthe: 11
     /**
      * Test la methode chargerLabyrinthe lorsque le fichier
      * n'a aucune erreur de format
