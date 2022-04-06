@@ -14,9 +14,9 @@ lorsqu'il rencontre un obstacle (un mur).
 * Dans la classe `MainLaby`, la boucle while ne s'arrêtait 
 pas lorsque le joueur avait atteint la sortie.
 
-* Dans la classe `Labyrinthe`, lancement de FichierIncorrectException 
+* Dans la classe `Labyrinthe`, lancement de `FichierIncorrectException` 
 alors que les nombres de lignes et colonnes étaient 
-correctes (ligne 214).
+correctes.
 
 ###
 ### Choix de programmation
@@ -36,7 +36,7 @@ Nous avons ensuite réalisé `MainLaby`, qui permet
 d'exécuter le jeu dans le terminal.
 
 Enfin, nous avons programmé `LabyrintheTest` qui permet 
-de vérifier que notre classe Labyrinthe fonctionne 
+de vérifier que notre classe `Labyrinthe` fonctionne 
 correctement.
 ###
 ### Lancement de l'application
@@ -47,12 +47,17 @@ correctement.
 
 ###
 ### Résumé des tests
-#### Réussis :
-* `test_charger_PasDeProbleme()` : 
+Nous avons réalisé 30 tests pour la classe `Labyrinthe` qui sont tous réussis :
+* 2 tests sur les constructeurs
+* 4 tests pour `getChar()`
+* 4 tests pour `getSuivant()`
+* 5 tests pour `deplacerPerso()`
+* 1 test pour `toString()`
+* 3 tests pour `etreFini()`
+* 11 tests pour `chargerLabyrinthe()`
 
-####Echoués :
-* 
 
 ###
 ### Couverture des tests et explications
 Nous avons essayé de couvrir un maximum de cas dans nos tests.
+Toutes les lignes de notre code ont été testées.
